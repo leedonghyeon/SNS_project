@@ -19,7 +19,7 @@
 이름   <input type="text" id="member_name" value="name" name="member_name" onfocus="clearText(this)"><br>
 비밀번호 질문
            <select >
-	         <option value="">질문 </option>
+	         <option value="">질문</option>
 			 <option value=" ">아버지의 성함은?</option>
 			 <option value="">가장 좋아하는 색깔은?</option>
 			 <option value="">가장 좋아하는 음식은?</option>
