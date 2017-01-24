@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace = "updateDao">
+
+
+    
+    <select id="select" resultType="joinmember">
+    	select member_id, member_password, member_name from JOINMEMBER where member_id=#{member_id} and member_name=#{member_name}
+    </select>
+     
+    <update id="Update" parameterType="joinmember">
+		UPDATE PERSON SET member_id=#{member_id},member_password=#{member_password},member_name=#{member_name},member_birth=#{member_birth},member_sex=#{member_sex}
+		WHERE member_name=#{member_name}
+    </update>
+    
+	
+</mapper>

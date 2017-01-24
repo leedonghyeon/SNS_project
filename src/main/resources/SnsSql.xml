@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace = "JoinMemberDao">
+
+	<insert id="insertMember" parameterType="joinmember">
+		<selectKey resultType="integer" keyProperty="member_no" order="BEFORE">
+		    SELECT MEMBER_SEQ_NO.nextVal FROM DUAL
+		</selectKey>
+		INSERT INTO JOINMEMBER VALUES(#{member_no},#{member_id},#{member_password},#{member_name},#{member_birth},#{member_sex},#{password_q},#{password_a})
+	</insert>
+    
+    <select id="selectLoginUser" resultType="joinmember">
+    	select member_id, member_password, member_name from JOINMEMBER where member_id=#{member_id} and member_password=#{member_password}
+    </select>
+    
+    <select id="selectFind" parameterType="joinmember" resultType="int">
+    	select count(*) from JOINMEMBER where member_id=#{member_id} and member_name=#{member_name} and password_a=#{password_a} 
+    </select>
+   
+   <update id="UpdatePassword" parameterType="joinmember">
+   		UPDATE JOINMEMBER SET member_password = #{member_password}
+   			where member_id=#{member_id} 
+   				and member_name=#{member_name}
+   					and password_a=#{password_a}
+   </update>
+    
+</mapper>
